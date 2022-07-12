@@ -8,13 +8,13 @@ serve((req) => {
     return new Response("request isn't trying to upgrade to websocket.");
   }
   const { socket, response } = Deno.upgradeWebSocket(req);
-  socket.onopen = () => console.log("socket opened");
+  socket.onopen = () => console.log("socket opened" + Deno.env.get("KKK"));
   socket.onmessage = (e) => {
     console.log("socket message:", Deno.inspect(e.data));
     socket.send("***" + ++a + "*** " + new Date().toString());
   };
   socket.onerror = (e) => console.log("socket errored:", e.message);
-  socket.onclose = () => console.log("socket closed:" + process.env.KKK);
+  socket.onclose = () => console.log("socket closed.");
   return response;
 });
 
