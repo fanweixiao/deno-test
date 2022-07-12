@@ -14,7 +14,7 @@ serve((req) => {
     socket.send("***" + ++a + "*** " + new Date().toString());
   };
   socket.onerror = (e) => console.log("socket errored:", e.message);
-  socket.onclose = () => console.log("socket closed");
+  socket.onclose = () => console.log("socket closed:" + process.env.KKK);
   return response;
 });
 
